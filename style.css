@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f7f7;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.top-bar {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    padding: 1em 1em;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+.location-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.location-icon:hover {
+    border-color: #888;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+.search-bar {
+    flex: 1;
+    padding: 0.5em 1em;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 15px;
+    outline: none;
+    background: #fafafa;
+}
+.map-container {
+    position: relative;
+    height: calc(95vh - 2em);
+    background: #e5e5e5;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.hamburger-btn {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 3em;
+    height: 3em;
+    background: rgba(255,255,255,0.95);
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    z-index: 2;
+}
+
+.hamburger-btn:hover {
+    background: rgba(255,255,255,1);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 20px;
+    height: 3px;
+    background: #444;
+    margin: 2.5px 0;
+    border-radius: 2px;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #dbeafe 60%, #f1f5f9 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
