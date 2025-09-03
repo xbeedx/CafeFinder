@@ -2,7 +2,7 @@
   "name": "cafefinder",
   "version": "1.0.0",
   "description": "Cafe Finder using Google map platform",
-  "main": "main.js",
+  "main": "electron-main.js",
   "scripts": {
     "start": "electron ."
   },
@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^37.4.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1"
   }
 }

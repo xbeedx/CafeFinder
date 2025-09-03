@@ -1,37 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <title>Cafe Finder</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="top-bar">
-      <span class="location-icon">
-        <svg width="20" height="20" fill="none" stroke="#3b82f6" stroke-width="2" viewBox="0 0 24 24">
-          <circle cx="12" cy="10" r="3"/>
-          <path d="M12 2c4.418 0 8 3.582 8 8 0 5.25-8 12-8 12S4 15.25 4 10c0-4.418 3.582-8 8-8z"/>
-        </svg>
-      </span>
-      <input class="search-bar" type="text" placeholder="Search cafes..." />
-    </div>
-    <div class="map-container">
-      <button class="hamburger-btn" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="map-placeholder">
-        Map goes here
+  <html>
+    <head>
+      <title>Place Search with Compact Place Details Element</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <div id="map-container"></div>
+      <div class="controls">
+        <input id="autocomplete-input" type="text" placeholder="Search for a place..." autocomplete="off" />
       </div>
-    </div>
-  </body>
-</html>
+      <div class="list-container">
+          <gmp-place-search orientation="vertical" selectable>
+              <gmp-place-all-content> </gmp-place-all-content>
+              <gmp-place-nearby-search-request
+              ></gmp-place-nearby-search-request>
+          </gmp-place-search>
+      </div>
+      <div id="details-container">
+          <gmp-place-details-compact orientation="horizontal">
+            <gmp-place-details-place-request></gmp-place-details-place-request>
+            <gmp-place-all-content></gmp-place-all-content>
+          </gmp-place-details-compact>
+      </div>
+      <script>
+        (async () => {
+          const apiKey = window.api ? await window.api.getApiKey() : '';
+          if (!apiKey) {
+            alert('Google Maps API key not found.');
+            return;
+          }
+          const script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.async = true;
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=weekly&language=en&region=US&libraries=places,geometry`;
+          script.onload = () => {
+            const mainScript = document.createElement('script');
+            mainScript.type = 'module';
+            mainScript.src = './main.js';
+            document.body.appendChild(mainScript);
+          };
+          document.head.appendChild(script);
+        })();
+      </script>
+    </body>
+  </html>
